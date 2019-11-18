@@ -1,13 +1,18 @@
 /*
     This project establishes a TCP connection to a influxdb database.
 */
+
+
+
 #include <ESP8266WiFi.h>
 #include <NTPClient.h>
 #include <WiFiUdp.h>
 #include <Ticker.h>
-#include <passwords.h>
 
-#define DEBUG
+//#define DEBUG
+#ifdef DEBUG
+  #include <passwords.h>
+#endif
 
 #ifndef PASSWORDS_H
   const char* ssid     = "SSID";

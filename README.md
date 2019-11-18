@@ -5,4 +5,3 @@ This ESP8266 firmware turns Weather Sensor into InfluxDB database. It allows vis
 ## Diagram
 
 ## Setup
-

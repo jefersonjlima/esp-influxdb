@@ -109,9 +109,9 @@ boolean postInflux(){
 #endif
 
   //Database connection
-  float humidity = dht.getHumidity();
-  float temperature = dht.getTemperature();
-    String epoch = String(timeClient.getEpochTime())  + "000000000";
+  uint8_t humidity = dht.getHumidity();
+  uint8_t temperature = dht.getTemperature();
+  String epoch = String(timeClient.getEpochTime())  + "000000000";
   // This will send a string to the server
   String post_qry = "/write?db=sensors&precision=ns";
   String body = "weather,location=pato-branco temperature=" +

@@ -3,13 +3,13 @@
 */
 
 
-
 #include <ESP8266WiFi.h>
 #include <NTPClient.h>
 #include <WiFiUdp.h>
 #include <Ticker.h>
+#include <DHT.h>
 
-//#define DEBUG
+#define DEBUG
 #ifdef DEBUG
   #include <passwords.h>
 #endif
@@ -40,6 +40,8 @@ Ticker timeTicker, sensorTicker;
 boolean getTime();
 boolean postInflux();
 
+DHT dht;
+
 void setup() {
 #ifdef DEBUG
   Serial.begin(115200);
@@ -68,6 +70,7 @@ void setup() {
   timeClient.update();
   timeTicker.attach_scheduled(3600, getTime);
   sensorTicker.attach_scheduled(1, postInflux);
+  dht.setup(2);
 }
 
 void loop() {
@@ -97,6 +100,7 @@ boolean postInflux(){
     }
   }
 #ifdef DEBUG
+  Serial.println();
   Serial.print("connected to ");
   Serial.print(host);
   Serial.print(':');
@@ -105,12 +109,13 @@ boolean postInflux(){
 #endif
 
   //Database connection
-  uint16_t value = 43;
-  String epoch = String(timeClient.getEpochTime())  + "000000000";
+  float humidity = dht.getHumidity();
+  float temperature = dht.getTemperature();
+    String epoch = String(timeClient.getEpochTime())  + "000000000";
   // This will send a string to the server
   String post_qry = "/write?db=sensors&precision=ns";
   String body = "weather,location=pato-branco temperature=" +
-                String(value) + " " + epoch;
+                String(temperature) + "," + "humidity=" + String(humidity) + " " + epoch;
 
   uint8_t Len = body.length();
   
@@ -118,7 +123,7 @@ boolean postInflux(){
     client.print(String("POST ") + post_qry + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" +
                "User-Agent: EspSensor\r\n" +
-               "Content-Type: application/octet-stream\r\n" + 
+               "Content-Type: text/plain\r\n" + 
                "Connection: close\r\n" +
                "Content-Length: " + String(Len) + "\r\n\r\n" +   
                body + "\r\n\r\n");
@@ -147,7 +152,6 @@ boolean postInflux(){
 
   // Close the connection
 #ifdef DEBUG
-  Serial.println();
   Serial.println("closing connection");
   client.stop();
 #endif

@@ -9,7 +9,7 @@
 #include <Ticker.h>
 #include <DHT.h>
 
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
   #include <passwords.h>
 #endif

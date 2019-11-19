@@ -80,6 +80,16 @@ sudo apt-get install grafana
 
 In the Grafana add a Influx Database Source by `<INFLUXDB_IP>:8086`, measurement `weather`.
 
+Apply the Measurment Moving Average:
+```sql
+SELECT MOVING_AVERAGE("humidity",100) as "humidity" FROM "weather" WHERE $timeFilter
+```
+
+and
+
+```sql
+SELECT MOVING_AVERAGE("temperature",100) as "temperature" FROM "weather" WHERE $timeFilter
+```
 
 Reference : https://grafana.com/docs/installation/
 

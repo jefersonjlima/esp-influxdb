@@ -93,6 +93,6 @@ SELECT MOVING_AVERAGE("temperature",100) as "temperature" FROM "weather" WHERE $
 
 Reference : https://grafana.com/docs/installation/
 
-#### Dashboarde Example
+#### Dashboard Example
 
 ![Simple Dashboard](./figures/grafana.png)

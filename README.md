@@ -14,7 +14,7 @@ To build and run this project you will need the followings:
 
 ## Diagram
 
-* WIP
+![Circuit](./figures/esquema.png)
 
 ## Installation and setup
 

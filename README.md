@@ -20,6 +20,7 @@ To build and run this project you will need the followings:
 
 
 ### InfluxDB
+#### Installation
 
 For Ubuntu users, add the InfluxData repository with the following commands:
 
@@ -66,6 +67,7 @@ time                 humidity location    temperature
 
 ### Grafana
 
+#### Installation
 Use the above line even if you are on Ubuntu or another Debian version.
 
 ```bash

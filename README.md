@@ -18,7 +18,6 @@ To build and run this project you will need the followings:
 
 ## Installation and setup
 
-
 ### InfluxDB
 #### Installation
 

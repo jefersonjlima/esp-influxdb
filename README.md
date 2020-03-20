@@ -1,5 +1,3 @@
-# Oi
-
 # Temperature and Humidity monitoring with ESP8266, InfluxDB and Grafana
 ![pipeline status](https://gitlab.com/cursoseaulas/esp-influxdb/badges/master/pipeline.svg)
 

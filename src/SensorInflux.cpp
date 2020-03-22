@@ -155,6 +155,5 @@ boolean postInflux(){
   Serial.println("closing connection");
   client.stop();
 #endif
-  // delay(1000);
   return 0;
 }

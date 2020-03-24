@@ -1,6 +1,8 @@
 # Temperature and Humidity monitoring with ESP8266, InfluxDB and Grafana
 ![pipeline status](https://gitlab.com/cursoseaulas/esp-influxdb/badges/master/pipeline.svg)
 
+![logo da UTF](https://upload.wikimedia.org/wikipedia/commons/8/85/Utfpr.gif)
+
 This ESP8266 firmware turns Weather Sensor into InfluxDB database. It allows visualising the Temperature and Humidity variables updates for the DHT-11 sensor using Grafana Dashboards.
 
 ## What you will need
@@ -22,6 +24,18 @@ To build and run this project you will need the followings:
 #### Installation
 
 For Ubuntu users, add the InfluxData repository with the following commands:
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def func:
+	...
+
+```
+
 
 ```bash
 wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
